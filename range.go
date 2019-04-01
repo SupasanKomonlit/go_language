@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func count( c chan int ){
-    for i := 0 l i < 20 ; i++ {
+    for i := 0 ; i < 20 ; i++ {
         c <- i
     }
     close( c )
