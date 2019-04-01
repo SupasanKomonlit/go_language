@@ -5,7 +5,7 @@ import "time"
 
 func worker1( c chan int ){
     for{
-        time.Sleep( 1 * time.Second )
+        time.Sleep( 2 * time.Second )
         c <- 10
     }
 }
@@ -15,6 +15,10 @@ func worker2( c chan int ){
         time.Sleep( 4 * time.Second )
         c <- 20
     }
+}
+
+func timer( stop chan int ){
+
 }
 
 func main(){
@@ -29,6 +33,10 @@ func main(){
                 fmt.Println( n )
             case n := <- c2:
                 fmt.Println( n )
+            default: // will run in case don't have to check
+                time.Sleep( 1 * time.Second) // use this for sleep wait
+                fmt.Println(".")
         }
     }
+    // warning select case will do if can do because select will check always
 }
