@@ -16,7 +16,7 @@ func generator() chan int{
 func multiplier( input chan int ) chan int{
     output := make( chan int)
     go func(){
-        for num := range input{
+        for num := range input{ // if you want to use range you must to have close( channel )
             output <- num*num
         }
         close( output )
